@@ -7,7 +7,7 @@ from playsound import playsound
 # Programme de gestion du MBot en bluetooth.
 
 # Configuration :
-port = '/dev/ttyACM0'
+port = 'COM4'
 precision = 1
 
 MBot = serial.Serial(port=port, baudrate=115200, timeout=.1)
@@ -28,7 +28,6 @@ def complete_with_zeros(num, n):
 def send_message(message):
     message += '\n'
     MBot.write(bytes(message, 'utf-8'))
-    print('Message envoyé au MBot : ' + message)
 
 # Effectue un déplacement du MBot pour un temps donnée (de 0 à 9 secondes).
 
@@ -79,7 +78,6 @@ def change_color():
 def serial_loop():
     if MBot.in_waiting > 0:
         message = MBot.readline().decode().strip()
-        print('Message reçu du MBot : ' + message)
         match message[0]:
             case '0':
                 lenght = int(message[2]) + int(message[1]) * 10
