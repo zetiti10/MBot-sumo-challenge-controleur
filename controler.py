@@ -7,7 +7,7 @@ from playsound import playsound
 # Programme de gestion du MBot en bluetooth.
 
 # Configuration :
-port = 'COM4'
+port = 'COM19'
 precision = 1
 
 MBot = serial.Serial(port=port, baudrate=115200, timeout=.1)
