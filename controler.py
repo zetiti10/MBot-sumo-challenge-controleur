@@ -7,7 +7,7 @@ from playsound import playsound
 # Programme de gestion du MBot en bluetooth.
 
 # Configuration :
-port = 'COM19'
+port = 'COM18'
 precision = 1
 
 MBot = serial.Serial(port=port, baudrate=115200, timeout=.1)
@@ -83,7 +83,7 @@ def serial_loop():
                 lenght = int(message[2]) + int(message[1]) * 10
                 distance_bar['value'] = lenght
             case '1':
-                playsound('./assets/fart.mp3', False)
+                playsound('./assets/audio.mp3', False)
 
     root.after(10, serial_loop)
 
@@ -189,6 +189,14 @@ ttk.Button(
     root,
     text='Police',
     command=lambda: send_message('52')).place(x=170, y=350)
+ttk.Button(
+    root,
+    text='Lancer le combat',
+    command=lambda: send_message('61')).place(x=100, y=400)
+ttk.Button(
+    root,
+    text='Stopper le combat',
+    command=lambda: send_message('60')).place(x=220, y=400)
 
 # Affichage de la distance avec l'objet le plus proche.
 ttk.Label(root, text='Capteur à ultrasons', font=(
