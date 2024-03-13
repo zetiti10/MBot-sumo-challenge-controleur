@@ -187,6 +187,10 @@ ttk.Button(
     command=lambda: send_message('51')).place(x=170, y=300)
 ttk.Button(
     root,
+    text='Victoire',
+    command=lambda: send_message('53')).place(x=170, y=325)
+ttk.Button(
+    root,
     text='Police',
     command=lambda: send_message('52')).place(x=170, y=350)
 ttk.Button(
