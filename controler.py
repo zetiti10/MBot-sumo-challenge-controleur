@@ -10,6 +10,7 @@ from playsound import playsound
 port = 'COM18'
 precision = 1
 
+MBot = None
 MBot = serial.Serial(port=port, baudrate=115200, timeout=.1)
 
 # Fonction servent à ajouter des zéros.
@@ -82,15 +83,13 @@ def serial_loop():
             case '0':
                 lenght = int(message[2]) + int(message[1]) * 10
                 distance_bar['value'] = lenght
-            case '1':
-                playsound('./assets/audio.mp3', False)
 
     root.after(10, serial_loop)
 
 
 # Initialisation de la fenêtre.
 root = tk.Tk()
-root.title('Contrôleur MBot 3000 - Édition "PAUL MET LES GAZ"')
+root.title('Contrôleur MBot 3000')
 root.geometry('1150x450+50+50')
 root.resizable(False, False)
 
